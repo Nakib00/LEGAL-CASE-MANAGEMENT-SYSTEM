@@ -77,9 +77,7 @@
 
     <!-- end row -->
     <!-- Pagination -->
-    <div class="row">
-        <div class="col-sm-12">
-            {{ $cases->links() }}
-        </div>
+    <div class="mt-1">
+        {{ $cases->onEachSide(1)->links('pagination::bootstrap-4') }}
     </div>
 </div>

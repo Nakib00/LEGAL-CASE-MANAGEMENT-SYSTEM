@@ -12,7 +12,7 @@ class Dashboard extends Component
 
     public $search = '';
     public $status = '';
-    public $perPage = 10;
+    public $perPage = 6;
 
     public function updatingSearch()
     {
