@@ -39,7 +39,10 @@ Route::prefix('legaladvisor')->group(function () {
         Route::prefix('dashboard')->group(function () {
             Route::get('/', [AuthController::class, 'ladvisord'])->name('ladvisord');
             Route::get('/profile', [AdvisorController::class, 'advisordProfile'])->name('advisord.profile');
-            Route::put('/advisor/{id}', [AdminController::class, 'update'])->name('advisor.update');
+            Route::put('/advisor/{id}', [AdvisorController::class, 'update'])->name('advisor.update');
+            // case route section
+            Route::get('/details/case/{id}', [AdvisorController::class, 'DatailsCase'])->name('advisor.DatailsCase');
+            Route::post('/comment/store', [AdvisorController::class, 'Commentstore'])->name('advisor.comment');
         });
     });
 });

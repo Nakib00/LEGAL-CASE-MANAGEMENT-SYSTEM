@@ -1,5 +1,5 @@
-@extends('admin.admimlayout')
-@section('admin')
+@extends('legalAdvisor.advisorlayout')
+@section('advisor')
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -72,6 +72,19 @@
                         <div class="card-body">
 
                             <h4 class="mt-0 mb-3">Comments ({{ $totalComments }})</h4>
+
+                            <form action="{{ route('advisor.comment') }}" method="POST">
+                                @csrf
+                                <textarea class="form-control form-control-light mb-2" name="comment" placeholder="Write message" id="example-textarea"
+                                    rows="3" required></textarea>
+                                <input type="hidden" name="case_id" value="{{ $case->id }}">
+
+                                <div class="text-right">
+                                    <div class="btn-group mb-2 ml-2">
+                                        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
 
                             <div class="comments-section">
                                 @foreach ($comments as $comment)

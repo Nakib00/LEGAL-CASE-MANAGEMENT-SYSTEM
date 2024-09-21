@@ -62,4 +62,61 @@ class AdvisorController extends Controller
             return redirect()->back()->with('error', 'Current password is incorrect.');
         }
     }
+
+    // case ditails
+    public function DatailsCase($id)
+    {
+        $case = DB::select("SELECT * FROM cases WHERE id = ?", [$id]);
+
+
+        if (empty($case)) {
+            abort(404); // Handle case not found
+        }
+
+        // Get the first case object
+        $case = $case[0];
+
+        // Fetch the case comments along with the advisor names
+        $comments = DB::table('comments')
+            ->join('legal_advisors', 'comments.advisor_id', '=', 'legal_advisors.id')
+            ->select('comments.comment', 'legal_advisors.name as advisor_name', 'comments.created_at')
+            ->where('comments.case_id', $id)
+            ->get()
+            ->map(function ($comment) {
+                $comment->created_at = \Carbon\Carbon::parse($comment->created_at)->diffForHumans();
+                return $comment;
+            });
+
+        // Count total comments
+        $totalComments = $comments->count();
+
+        // Decode the JSON to access files
+        $case->files = json_decode($case->file, true);
+
+        return view('legalAdvisor.CaseDetails', ['case' => $case, 'totalComments' => $totalComments, 'comments' => $comments]);
+    }
+
+    // comment submit
+    public function Commentstore(Request $request)
+    {
+        // Validate the input
+        $request->validate([
+            'comment' => 'required|string|max:500',
+            'case_id' => 'required|exists:cases,id',
+        ]);
+
+        // get login admin id
+        $advisorId = auth()->guard('ladvisor')->id();
+
+        // Store the comment
+        DB::table('comments')->insert([
+            'case_id' => $request->case_id,
+            'comment' => $request->comment,
+            'advisor_id' => $advisorId,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Comment added successfully.');
+    }
 }

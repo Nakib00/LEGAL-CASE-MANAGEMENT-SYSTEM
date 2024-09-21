@@ -71,10 +71,24 @@ class AdminController extends Controller
         // Get the first case object
         $case = $case[0];
 
+        // Fetch the case comments along with the advisor names
+        $comments = DB::table('comments')
+            ->join('legal_advisors', 'comments.advisor_id', '=', 'legal_advisors.id')
+            ->select('comments.comment', 'legal_advisors.name as advisor_name', 'comments.created_at')
+            ->where('comments.case_id', $id)
+            ->get()
+            ->map(function ($comment) {
+                $comment->created_at = \Carbon\Carbon::parse($comment->created_at)->diffForHumans();
+                return $comment;
+            });
+
+        // Count total comments
+        $totalComments = $comments->count();
+
         // Decode the JSON to access files
         $case->files = json_decode($case->file, true);
 
-        return view('admin.CaseDetails', ['case' => $case]);
+        return view('admin.CaseDetails', ['case' => $case, 'totalComments' => $totalComments, 'comments' => $comments]);
     }
 
     // Edit case

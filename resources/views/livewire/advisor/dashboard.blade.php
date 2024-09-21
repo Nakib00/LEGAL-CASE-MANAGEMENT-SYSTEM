@@ -35,7 +35,7 @@
             <div class="col-lg-4">
                 <div class="card-box project-box">
                     <!-- Title-->
-                    <h4 class="mt-0"><a href="project-detail.html" class="text-dark">{{ $case->number }}</a></h4>
+                    <h4 class="mt-0"><a href="{{ route('advisor.DatailsCase', ['id' => $case->id]) }}" class="text-dark">{{ $case->number }}</a></h4>
                     <p class="text-muted text-uppercase"><i class="mdi mdi-account-circle"></i>
                         <small>{{ $case->admin_name }}</small>
                     </p>
