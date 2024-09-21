@@ -209,4 +209,9 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'Current password is incorrect.');
         }
     }
+
+    // show all case
+    public function caselist(){
+        return view('admin.CaseList');
+    }
 }

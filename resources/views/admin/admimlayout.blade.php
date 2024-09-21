@@ -65,6 +65,9 @@
                         <a href="{{ route('admind') }}">Dashboard</a>
                     </li>
                     <li>
+                        <a href="{{ route('case.list') }}">Case List</a>
+                    </li>
+                    <li>
                         <a href="#sidebarDashboards" data-toggle="collapse">
                             <i data-feather="airplay"></i>
                             <span> Profile Info </span>

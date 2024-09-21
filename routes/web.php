@@ -29,6 +29,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/edit/case/{id}', [AdminController::class, 'EditCase'])->name('admin.EditCase');
             Route::post('/cases/{id}/update', [AdminController::class, 'updateCase'])->name('cases.update');
             Route::delete('/cases/{id}', [AdminController::class, 'delete'])->name('cases.delete');
+            Route::get('/case/list', [AdminController::class, 'caselist'])->name('case.list');
         });
     });
 });
