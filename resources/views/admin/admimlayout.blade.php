@@ -62,15 +62,16 @@
                     <li class="menu-title">Navigation</li>
 
                     <li>
+                        <a href="{{ route('admind') }}">Dashboard</a>
+                    </li>
+                    <li>
                         <a href="#sidebarDashboards" data-toggle="collapse">
                             <i data-feather="airplay"></i>
                             <span> Profile Info </span>
                         </a>
                         <div class="collapse" id="sidebarDashboards">
                             <ul class="nav-second-level">
-                                <li>
-                                    <a href="{{ route('admind') }}">Dashboard</a>
-                                </li>
+
                                 <li>
                                     <a href="{{ route('admin.profile') }}">My Account</a>
                                 </li>

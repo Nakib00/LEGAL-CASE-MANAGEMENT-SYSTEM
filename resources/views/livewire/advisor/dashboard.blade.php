@@ -6,45 +6,50 @@
                 <div class="text-sm-right">
                     <!-- Search and Dropdown Section -->
                     <form class="form-inline mb-3">
-                        <div class="form-group mb-2">
-                            <label for="search-input" class="sr-only">Search</label>
-                            <input type="search" class="form-control" id="search-input" wire:model.live="search"
-                                placeholder="Search...">
-                        </div>
-                        <div class="form-group mx-sm-3 mb-2">
-                            <label for="status-select" class="mr-2">Status</label>
-                            <select class="custom-select" wire:model.live="status">
-                                <option selected value="">Choose Status...</option>
-                                <option value="Active">Active</option>
-                                <option value="Ongoing">Ongoing</option>
-                                <option value="Finished">Finished</option>
-                                <option value="Closed">Closed</option>
-                            </select>
+                        <div class="form-row align-items-center">
+                            <!-- Search Input -->
+                            <div class="col-auto">
+                                <label for="search-input" class="sr-only">Search</label>
+                                <input type="search" class="form-control" id="search-input" wire:model.live="search"
+                                    placeholder="Search...">
+                            </div>
+
+                            <!-- Status Dropdown -->
+                            <div class="col-auto">
+                                <label for="status-select" class="sr-only">Status</label>
+                                <select class="custom-select" wire:model.live="status">
+                                    <option selected value="">Choose Status...</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Ongoing">Ongoing</option>
+                                    <option value="Finished">Finished</option>
+                                    <option value="Closed">Closed</option>
+                                </select>
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
-
-        </div><!-- end col-->
+        </div><!-- end row -->
     </div>
     <!-- end row-->
 
 
-    <div class="row">
+    <div class="row d-flex flex-wrap">
         @foreach ($cases as $case)
-            <div class="col-lg-4">
-                <div class="card-box project-box">
+            <div class="col-lg-4 d-flex">
+                <div class="card-box project-box flex-fill">
                     <!-- Title-->
-                    <h4 class="mt-0"><a href="{{ route('advisor.DatailsCase', ['id' => $case->id]) }}" class="text-dark">{{ $case->number }}</a></h4>
+                    <h4 class="mt-0"><a href="{{ route('advisor.DatailsCase', ['id' => $case->id]) }}"
+                            class="text-dark">{{ $case->number }}</a></h4>
                     <p class="text-muted text-uppercase"><i class="mdi mdi-account-circle"></i>
                         <small>{{ $case->admin_name }}</small>
                     </p>
                     <div
                         class="badge
-                        @if ($case->status == 'Active') bg-info text-white
-                        @elseif($case->status == 'Ongoing') bg-warning text-dark
-                        @elseif($case->status == 'Finished') bg-success text-white
-                        @elseif($case->status == 'Closed') bg-danger text-white @endif mb-3">
+                    @if ($case->status == 'Active') bg-info text-white
+                    @elseif($case->status == 'Ongoing') bg-warning text-dark
+                    @elseif($case->status == 'Finished') bg-success text-white
+                    @elseif($case->status == 'Closed') bg-danger text-white @endif mb-3">
                         {{ $case->status }}
                     </div>
 
@@ -69,6 +74,7 @@
             </div><!-- end col-->
         @endforeach
     </div>
+
     <!-- end row -->
     <!-- Pagination -->
     <div class="row">

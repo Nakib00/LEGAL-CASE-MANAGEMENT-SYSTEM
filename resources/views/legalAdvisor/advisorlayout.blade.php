@@ -60,7 +60,9 @@
                 <ul id="side-menu">
 
                     <li class="menu-title">Navigation</li>
-
+                    <li>
+                        <a href="{{ route('ladvisord') }}">Dashboard</a>
+                    </li>
                     <li>
                         <a href="#sidebarDashboards" data-toggle="collapse">
                             <i data-feather="airplay"></i>
@@ -68,9 +70,7 @@
                         </a>
                         <div class="collapse" id="sidebarDashboards">
                             <ul class="nav-second-level">
-                                <li>
-                                    <a href="{{ route('ladvisord') }}">Dashboard</a>
-                                </li>
+
                                 <li>
                                     <a href="{{ route('advisord.profile') }}">My Account</a>
                                 </li>

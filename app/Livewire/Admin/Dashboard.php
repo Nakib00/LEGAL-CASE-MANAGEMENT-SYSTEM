@@ -19,6 +19,23 @@ class Dashboard extends Component
     ];
     public function render()
     {
+        // Get the logged-in admin's ID
+        $adminId = auth()->guard('admin')->id();
+
+        // the total cases created by this admin
+        $totalCases = DB::table('cases')
+            ->where('admin_id', $adminId)
+            ->count();
+
+        //the total number of legal advisors
+        $totalAdvisors = DB::table('legal_advisors')->count();
+
+        //the total number of comments on this admin's cases
+        $totalComments = DB::table('comments')
+            ->join('cases', 'comments.case_id', '=', 'cases.id')
+            ->where('cases.admin_id', $adminId)
+            ->count();
+
         $cases = DB::table('cases')
             ->when($this->search, function ($query) {
                 return $query->where('number', 'like', '%' . $this->search . '%');
@@ -26,10 +43,13 @@ class Dashboard extends Component
             ->when($this->status, function ($query) {
                 return $query->where('status', $this->status);
             })
-            ->paginate(10);
+            ->paginate(5);
 
         return view('livewire.admin.dashboard', [
-            'cases' => $cases
+            'cases' => $cases,
+            'totalCases' => $totalCases,
+            'totalAdvisors' => $totalAdvisors,
+            'totalComments' => $totalComments
         ]);
     }
 }
