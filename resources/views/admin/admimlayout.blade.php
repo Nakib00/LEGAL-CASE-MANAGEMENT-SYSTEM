@@ -1,7 +1,7 @@
 @extends('components.layouts.app')
 @section('content')
     <!-- Topbar Start -->
-    <div class="navbar-custom">
+    <div class="navbar-custom" style="background-color: #152547;">
         <div class="container-fluid">
             <ul class="list-unstyled topnav-menu float-right mb-0">
 
@@ -20,19 +20,19 @@
             <div class="logo-box">
                 <a href="{{ route('admind') }}" class="logo logo-dark text-center">
                     <span class="logo-sm">
-                        <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
+                        <img src="{{ asset('assets/images/chevron_logo.png') }}" alt="" height="50">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="20">
+                        <img src="{{ asset('assets/images/chevron_logo.png') }}" alt="" height="50">
                     </span>
                 </a>
 
                 <a href="{{ route('admind') }}" class="logo logo-light text-center">
                     <span class="logo-sm">
-                        <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
+                        <img src="{{ asset('assets/images/chevron_logo.png') }}" alt="" height="50">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="20">
+                        <img src="{{ asset('assets/images/chevron_logo.png') }}" alt="" height="50">
                     </span>
                 </a>
             </div>
