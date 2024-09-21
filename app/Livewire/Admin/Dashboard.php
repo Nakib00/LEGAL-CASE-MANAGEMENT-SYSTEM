@@ -45,6 +45,16 @@ class Dashboard extends Component
             })
             ->paginate(5);
 
+        // $cases = DB::table('cases')
+        //     ->where('admin_id', $adminId)
+        //     ->when($this->search, function ($query) {
+        //         return $query->where('number', 'like', '%' . $this->search . '%');
+        //     })
+        //     ->when($this->status, function ($query) {
+        //         return $query->where('status', $this->status);
+        //     })
+        //     ->paginate(5);
+
         return view('livewire.admin.dashboard', [
             'cases' => $cases,
             'totalCases' => $totalCases,
