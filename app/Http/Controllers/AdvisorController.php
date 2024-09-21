@@ -33,14 +33,14 @@ class AdvisorController extends Controller
             'nid' => 'required|numeric',
             'current_password' => 'required',
             'new_password' => 'nullable|min:6',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        // Fetch the current password hash for the legal advisor using raw SQL
+        // Fetch the current password hash for the legal advisor
         $advisor = DB::table('legal_advisors')->where('id', $id)->first();
 
         // Check if the current password matches
         if (Hash::check($request->current_password, $advisor->password)) {
-
             // Prepare an array of fields to update
             $updateFields = [
                 'name' => $request->name,
@@ -49,12 +49,24 @@ class AdvisorController extends Controller
                 'nid' => $request->nid,
             ];
 
+            // Handle image upload
+            if ($request->hasFile('image')) {
+                // Delete the old image if it exists
+                if ($advisor->image) {
+                    Storage::disk('public')->delete(str_replace('/storage/', '', $advisor->image));
+                }
+
+                // Store the new image
+                $imagePath = $request->file('image')->store('uploads', 'public');
+                $updateFields['image'] = '/storage/' . $imagePath;
+            }
+
             // If a new password is provided, hash it and add it to the update array
             if ($request->new_password) {
                 $updateFields['password'] = Hash::make($request->new_password);
             }
 
-            // Update the advisor details using raw SQL
+            // Update the advisor details
             DB::table('legal_advisors')->where('id', $id)->update($updateFields);
 
             return redirect()->back()->with('success', 'Profile updated successfully.');
@@ -62,6 +74,7 @@ class AdvisorController extends Controller
             return redirect()->back()->with('error', 'Current password is incorrect.');
         }
     }
+
 
     // case ditails
     public function DatailsCase($id)

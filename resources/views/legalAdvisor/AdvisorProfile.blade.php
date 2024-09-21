@@ -8,7 +8,9 @@
         </div>
         <div class="col-lg-4 col-xl-4">
             <div class="card-box text-center">
-
+                @if ($advisor->image)
+                    <img src="{{ $advisor->image }}" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
+                @endif
                 <h4 class="mb-0">{{ $advisor->name }}</h4>
 
                 <div class="text-left mt-3">
@@ -31,7 +33,7 @@
             <div class="card-box">
 
                 <div class="tab-pane" id="settings">
-                    <form action="{{ route('advisor.update', $advisor->id) }}" method="POST">
+                    <form action="{{ route('advisor.update', $advisor->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -70,6 +72,17 @@
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="image">Profile Image</label>
+                                <input type="file" name="image" class="form-control" id="image" accept="image/*">
+                                @if ($advisor->image)
+                                    <img src="{{ $advisor->image }}" alt="Current Image" class="img-thumbnail mt-2"
+                                        style="max-width: 150px;">
+                                @endif
+                            </div>
+                        </div> <!-- end col -->
 
                         <!-- Password Section -->
                         <div class="row">

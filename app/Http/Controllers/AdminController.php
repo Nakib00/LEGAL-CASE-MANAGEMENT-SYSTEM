@@ -180,6 +180,7 @@ class AdminController extends Controller
             'nid' => 'required|numeric',
             'current_password' => 'required',
             'new_password' => 'nullable|min:6',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         // Fetch the current password hash for the admin
@@ -187,7 +188,6 @@ class AdminController extends Controller
 
         // Check if the current password matches
         if (Hash::check($request->current_password, $admin->password)) {
-
             // Prepare an array of fields to update
             $updateFields = [
                 'name' => $request->name,
@@ -195,6 +195,18 @@ class AdminController extends Controller
                 'email' => $request->email,
                 'nid' => $request->nid,
             ];
+
+            // Handle image upload
+            if ($request->hasFile('image')) {
+                // Delete the old image if exists
+                if ($admin->image) {
+                    Storage::disk('public')->delete(str_replace('/storage/', '', $admin->image));
+                }
+
+                // Store the new image
+                $imagePath = $request->file('image')->store('uploads', 'public');
+                $updateFields['image'] = '/storage/' . $imagePath;
+            }
 
             // If a new password is provided, hash it and add it to the update array
             if ($request->new_password) {
@@ -211,7 +223,8 @@ class AdminController extends Controller
     }
 
     // show all case
-    public function caselist(){
+    public function caselist()
+    {
         return view('admin.CaseList');
     }
 }

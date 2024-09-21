@@ -8,30 +8,30 @@
         </div>
         <div class="col-lg-4 col-xl-4">
             <div class="card-box text-center">
-
+                @if ($admin->image)
+                    <img src="{{ $admin->image }}" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
+                @endif
                 <h4 class="mb-0">{{ $admin->name }}</h4>
 
                 <div class="text-left mt-3">
                     <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span
                             class="ml-2">{{ $admin->name }}</span></p>
-
-                    <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span
+                    <p class="text-muted mb-2 font-13"><strong>Mobile :</strong> <span
                             class="ml-2">{{ $admin->phone }}</span></p>
-
                     <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span
-                            class="ml-2 ">{{ $admin->email }}</span></p>
-
-                    <p class="text-muted mb-1 font-13"><strong>Nid :</strong> <span
+                            class="ml-2">{{ $admin->email }}</span></p>
+                    <p class="text-muted mb-1 font-13"><strong>NID :</strong> <span
                             class="ml-2">{{ $admin->nid }}</span></p>
                 </div>
             </div> <!-- end card-box -->
+
         </div> <!-- end col-->
 
         <div class="col-lg-8 col-xl-8">
             <div class="card-box">
 
                 <div class="tab-pane" id="settings">
-                    <form action="{{ route('admin.update', $admin->id) }}" method="POST">
+                    <form action="{{ route('admin.update', $admin->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -70,6 +70,18 @@
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="image">Profile Image</label>
+                                <input type="file" name="image" class="form-control" id="image" accept="image/*">
+                                @if ($admin->image)
+                                    <img src="{{ $admin->image }}" alt="Current Image" class="img-thumbnail mt-2"
+                                        style="max-width: 150px;">
+                                @endif
+                            </div>
+                        </div> <!-- end col -->
+
 
                         <!-- Password Section -->
                         <div class="row">

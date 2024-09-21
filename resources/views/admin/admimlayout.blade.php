@@ -47,12 +47,17 @@
 
             <!-- User box -->
             <div class="user-box text-center">
+                @if (Auth::guard('admin')->user()->image)
+                    <img src="{{ Auth::guard('admin')->user()->image }}" alt="user-img"
+                        title="{{ Auth::guard('admin')->user()->name }}" class="rounded-circle avatar-md">
+                @endif
                 <div class="dropdown">
                     <a href="" class="text-dark font-weight-normal dropdown-toggle h5 mt-2 mb-1 d-block"
-                        data-toggle="dropdown">{{ Auth::guard('admin')->user()->name }} </a>
+                        data-toggle="dropdown">{{ Auth::guard('admin')->user()->name }}</a>
                 </div>
                 <p class="text-muted">Admin</p>
             </div>
+
 
             <!--- Sidemenu -->
             <div id="sidebar-menu">

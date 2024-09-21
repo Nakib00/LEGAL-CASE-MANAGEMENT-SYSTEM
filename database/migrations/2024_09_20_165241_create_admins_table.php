@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone');
             $table->string('nid');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

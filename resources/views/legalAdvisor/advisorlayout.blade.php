@@ -47,6 +47,10 @@
 
             <!-- User box -->
             <div class="user-box text-center">
+                @if (Auth::guard('ladvisor')->user()->image)
+                    <img src="{{ Auth::guard('ladvisor')->user()->image }}" alt="user-img"
+                        title="{{ Auth::guard('ladvisor')->user()->name }}" class="rounded-circle avatar-md">
+                @endif
                 <div class="dropdown">
                     <a href="" class="text-dark font-weight-normal dropdown-toggle h5 mt-2 mb-1 d-block"
                         data-toggle="dropdown">{{ Auth::guard('ladvisor')->user()->name }} </a>
