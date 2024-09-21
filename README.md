@@ -22,3 +22,17 @@ Justice Hub is a web application designed for efficient case management, aimed a
 - **MySQL**: Database for storing case details, user information, and comments.
 
 Justice Hub is designed to simplify the workflow of case management, making it easier for legal professionals to collaborate and stay organized.
+
+## Screenshots
+
+### Admin Dashboard
+![Admin Dashboard](https://github.com/Nakib00/LEGAL-CASE-MANAGEMENT-SYSTEM/blob/main/website%20image/adminDashboard.png?raw=true)
+
+### Case Details
+![Case Details](https://github.com/Nakib00/LEGAL-CASE-MANAGEMENT-SYSTEM/blob/main/website%20image/showcasedetails.png?raw=true)
+
+### Profile Page
+![Profile Page](https://github.com/Nakib00/LEGAL-CASE-MANAGEMENT-SYSTEM/blob/main/website%20image/profile.png?raw=true)
+
+### Legal Advisor Dashboard
+![Legal Advisor Dashboard](https://github.com/Nakib00/LEGAL-CASE-MANAGEMENT-SYSTEM/blob/main/website%20image/advisorDashboard.png?raw=true)
