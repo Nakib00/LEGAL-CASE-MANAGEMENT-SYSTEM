@@ -22,7 +22,7 @@
 
                 <li class="menu-title">Navigation</li>
                 <li>
-                    <a href="{{ route('ladvisord') }}">Dashboard</a>
+                    <a href="{{ route('ladvisord') }}" wire:navigate>Dashboard</a>
                 </li>
                 <li>
                     <a href="#sidebarDashboards" data-toggle="collapse">
@@ -33,10 +33,10 @@
                         <ul class="nav-second-level">
 
                             <li>
-                                <a href="{{ route('advisord.profile') }}">My Account</a>
+                                <a href="{{ route('advisord.profile') }}" wire:navigate>My Account</a>
                             </li>
                             <li>
-                                <a href="{{ route('lageladvisor.logout') }}">Logout</a>
+                                <a href="{{ route('lageladvisor.logout') }}" wire:navigate>Logout</a>
                             </li>
                         </ul>
                     </div>

@@ -41,7 +41,7 @@
                 <div class="card-box project-box flex-fill">
                     <!-- Title-->
                     <h4 class="mt-0"><a href="{{ route('admin.DatailsCase', ['id' => $case->id]) }}"
-                            class="text-dark">{{ $case->number }}</a></h4>
+                            wire:navigate class="text-dark">{{ $case->number }}</a></h4>
                     <p class="text-muted text-uppercase"><i class="mdi mdi-account-circle"></i>
                         <small>{{ $case->admin_name }}</small>
                     </p>

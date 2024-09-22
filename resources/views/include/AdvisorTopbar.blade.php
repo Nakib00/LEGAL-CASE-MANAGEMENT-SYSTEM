@@ -15,7 +15,7 @@
 
             <!-- LOGO -->
             <div class="logo-box">
-                <a href="{{ route('ladvisord') }}" class="logo logo-light text-center">
+                <a href="{{ route('ladvisord') }}" wire:navigate class="logo logo-light text-center">
                     <span class="logo-sm">
                         <img src="{{ asset('assets/images/chevron_logo.png') }}" alt="" height="50">
                     </span>

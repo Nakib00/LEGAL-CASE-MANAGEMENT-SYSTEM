@@ -24,10 +24,10 @@
                 <li class="menu-title">Navigation</li>
 
                 <li>
-                    <a href="{{ route('admind') }}">Dashboard</a>
+                    <a href="{{ route('admind') }}" wire:navigate>Dashboard</a>
                 </li>
                 <li>
-                    <a href="{{ route('case.list') }}">Case List</a>
+                    <a href="{{ route('case.list') }}" wire:navigate>Case List</a>
                 </li>
                 <li>
                     <a href="#sidebarDashboards" data-toggle="collapse">
@@ -38,10 +38,10 @@
                         <ul class="nav-second-level">
 
                             <li>
-                                <a href="{{ route('admin.profile') }}">My Account</a>
+                                <a href="{{ route('admin.profile') }}" wire:navigate>My Account</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.logout') }}">Logout</a>
+                                <a href="{{ route('admin.logout') }}" wire:navigate>Logout</a>
                             </li>
                         </ul>
                     </div>

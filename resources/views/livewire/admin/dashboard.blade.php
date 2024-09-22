@@ -134,11 +134,11 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('admin.DatailsCase', ['id' => $case->id]) }}"
-                                                class="action-icon">
+                                                wire:navigate class="action-icon">
                                                 <i class="mdi mdi-eye"></i>
                                             </a>
                                             <a href="{{ route('admin.EditCase', ['id' => $case->id]) }}"
-                                                class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                wire:navigate class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
                                             <a href="javascript:void(0);" class="action-icon">
                                                 <form action="{{ route('cases.delete', $case->id) }}" method="POST">
                                                     @csrf
