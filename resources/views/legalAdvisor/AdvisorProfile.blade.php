@@ -1,4 +1,9 @@
 @extends('legalAdvisor.advisorlayout')
+{{-- webpage title --}}
+@section('title')
+    Profile
+@endsection
+{{-- main  --}}
 @section('advisor')
     <div class="row">
         <div class="col-12">

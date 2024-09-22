@@ -1,4 +1,9 @@
 @extends('admin.admimlayout')
+{{-- webpage title --}}
+@section('title')
+    Create Case
+@endsection
+{{-- main  --}}
 @section('admin')
     <div class="row">
         <div class="col-12">

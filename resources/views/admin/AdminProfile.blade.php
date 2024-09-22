@@ -1,4 +1,9 @@
 @extends('admin.admimlayout')
+{{-- webpage title --}}
+@section('title')
+    Profile
+@endsection
+{{-- main  --}}
 @section('admin')
     <div class="row">
         <div class="col-12">

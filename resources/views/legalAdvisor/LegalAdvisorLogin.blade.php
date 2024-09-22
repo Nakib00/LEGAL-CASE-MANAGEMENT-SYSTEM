@@ -1,3 +1,8 @@
+{{-- webpage title --}}
+@section('title')
+    Legal Advisor Login & Register
+@endsection
+{{-- main  --}}
 @include('include.head')
 
 <body class="authentication-bg authentication-bg-pattern">
